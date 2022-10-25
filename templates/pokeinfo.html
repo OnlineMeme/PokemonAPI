@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="space"></div>
+<div class="d-flex justify-content-center">
+  <div class="card">
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <img
+              class="img-thumbnail"
+              src="{{sprite_data['sprites']['other']['official-artwork']['front_default']}}"
+              alt="{{sprite_data['name'] | capitalize}}"
+            />
+          </div>
+          <div class="col-sm-8">
+            <h1>{{sprite_data['name'] | capitalize}} #{{sprite_data['id']}}</h1>
+            <p>{{en_flavor}}</p>
+            <table class="table table-hover">
+              <tr>
+                <td>Type:</td>
+                <td>
+                  <b>
+                    {% for type in sprite_data['types'] %}
+                    {{type['type']['name']| capitalize}} {% endfor %}
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>Color:</td>
+                <td><b>{{name_data['color']['name'] | capitalize}}</b></td>
+              </tr>
+              <tr>
+                <td>Weight:</td>
+                <td>
+                  <b>{{(2.2*sprite_data['weight'] / 10)|round(1)}} lbs.</b>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="space"></div>
+          <hr></hr>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" colspan="3" class="text-center">Sprites</th>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Normal</th>
+                <th scope="col">Shiny</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Front</th>
+                <td>
+                  <img
+                    class="text-center"
+                    src="{{sprite_data['sprites']['front_default']}}"
+                    alt="{{sprite_data['name'] | capitalize}}"
+                  />
+                </td>
+                <td>
+                  <img
+                    class="text-center"
+                    src="{{sprite_data['sprites']['front_shiny']}}"
+                    alt="{{sprite_data['name'] | capitalize}}"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Back</th>
+                <td>
+                  <img
+                    class="text-center"
+                    src="{{sprite_data['sprites']['back_default']}}"
+                    alt="{{sprite_data['name'] | capitalize}}"
+                  />
+                </td>
+                <td>
+                  <img
+                    class="text-center"
+                    src="{{sprite_data['sprites']['back_shiny']}}"
+                    alt="{{sprite_data['name'] | capitalize}}"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
